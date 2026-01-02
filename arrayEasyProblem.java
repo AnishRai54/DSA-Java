@@ -143,15 +143,136 @@ public class arrayEasyProblem{
 
 
 
-    public static void main(String[] args){
-        int [] arr={1,2,3,4};
-        System.out.println(LargestElement(arr));
-        System.out.println(SecondLargest(arr));
-        System.out.println(CheckSorted(arr));
-        int[] result = RemoveDuplicat(arr);
-System.out.println(Arrays.toString(result));
-System.out.println(RemoveDuplicate(arr));
+    // left rotate the array by d place
 
+    // O(n) and space is also O(n)
+
+    public static int [] LeftRoateByD(int[] arr,int d){
+        int n=arr.length;
+         d=d%n;
+        int [] temp=new int[d];
+
+        for (int i=0;i<d;i++){
+            temp[i]=arr[i];
+
+
+        }
+
+        for (int i=d;i<n;i++){
+            arr[i-d]=arr[i];
+        }
+
+        for(int i=n-d; i<n;i++){
+            arr[i]=temp[i-(n-d)];
+        }
+
+
+        return arr;
+    }
+
+
+  // m=optimum O(n) and space is O(1)
+
+
+  public static void reverseArray(int[] arr,int start,int end){
+     while(start<=end){
+        int temp=arr[start];
+        arr[start]=arr[end];
+        arr[end]=temp;
+        start++;
+        end--;
+
+     }
+  }
+ 
+
+  public static int[] LeftRoateByd(int[] arr,int d) {
+
+    int n=arr.length;
+    d=d%n;
+    reverseArray(arr, 0, d-1);
+    reverseArray(arr, d, n-1);
+    reverseArray(arr, 0, n-1);
+
+
+
+
+    return arr;
+    
+  }
+
+
+
+  // Move Zero T0 end
+
+  // [1,0,2,3,0,0,5]
+
+  // brute approach 
+
+  public static int[] moveZeroToEnd(int[] arr ){
+
+    int n =arr.length;
+    int []temp=new int[n];
+    int count=0;
+    int index=0;
+
+    for(int i=0; i<n;i++ ){
+        if (arr[i]!=0){
+            temp[index++]=arr[i];
+        }
+        else{
+            count++;
+        }
+
+    }
+
+
+    return temp;
+  }
+
+  
+
+   // linear Search
+
+   public static int search(int[] arr,int d){
+int i=0;
+    while ( i<arr.length) {
+        if (arr[i]==d){
+           return i;
+        }
+
+        i++;
+
+        
+    }
+
+    return -1;
+   }
+
+
+   
+
+
+      
+
+
+
+
+
+    public static void main(String[] args){
+        int [] arr={1,0,2,3,0,0,5};
+        // System.out.println(LargestElement(arr));
+        // System.out.println(SecondLargest(arr));
+        // System.out.println(CheckSorted(arr));
+        // int[] result = RemoveDuplicat(arr);
+        // int [] rotate=LeftRoateByd(arr,2);
+        // System.out.println(Arrays.toString(result));
+        // System.out.println(RemoveDuplicate(arr));
+        // System.out.println(Arrays.toString(rotate));
+        // int result[]=moveZeroToEnd(arr);
+        // System.out.println(Arrays.toString(result));
+
+        System.out.println(search(arr, 5));
 
         
         
